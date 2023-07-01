@@ -1,0 +1,14 @@
+.headbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4em;
+}
+
+.logo {
+  width: 12em;
+  height: 1.5em;
+  background-image: url('/accuweather.svg');
+  background-repeat: no-repeat;
+  background-position: center center;
+}

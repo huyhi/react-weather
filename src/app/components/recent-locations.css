@@ -1,0 +1,11 @@
+.recent-locations-container {
+  margin: 1em 0 0 0;
+  padding: 0 0.5em;
+}
+
+.recent-locations-label {
+  color: #D5D8DC;
+  font-size: 0.9em;
+  font-weight: 200;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
