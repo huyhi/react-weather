@@ -11,8 +11,10 @@ import axios from "axios"
 // 	}
 // };
 
-const Q_WEATHER_KEY = '3fdbd4e6a48e4fff9b9ecbe05fde26bd'
+const OPEN_WEATHER_KEY = '9020423f7dd2dfb03f34ca4b767ad223'
+const OPEN_WEATHER_HOST = 'https://api.openweathermap.org/data/3.0/onecall'
 
+const Q_WEATHER_KEY = '3fdbd4e6a48e4fff9b9ecbe05fde26bd'
 const Q_WEATHER_HOST = 'https://geoapi.qweather.com/v2'
 
 export const api = function(method, url, params) {

@@ -21,7 +21,7 @@ export default function Headbar() {
           variant="outlined"
           sx = {buttonStyle}
         >
-          Log In To Sync
+          view on Github
         </Button>
       </div>
     </div>

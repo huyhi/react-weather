@@ -18,7 +18,7 @@ export default function Home() {
     <>
       <Provider store={store}>
         <Carousel />
-        <WeatherInfo/>
+        <WeatherInfo />
       </Provider>
     </>
   )

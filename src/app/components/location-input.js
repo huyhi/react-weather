@@ -18,6 +18,7 @@ export default function SearchInput() {
 
   const dispatch = useDispatch()
   const setSearchCityG = (data) => {return {type: 'SET_SEARCHED_CITY', payload: data}}
+  const setWeatherInfoG = (data) => {return {type: 'SET_WEATHER_INFO', payload: data}}
 
   const loadOptions = (searchText) => {
     apis
