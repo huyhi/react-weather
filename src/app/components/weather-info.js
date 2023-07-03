@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux"
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import './weather-info.css'
+import { isEmptyObj } from '../common'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -36,40 +37,47 @@ TabPanel.propTypes = {
 
 const CurrentWeather = () => {
 
-  const searchCity = useSelector(state => state.searchCity_g)
+  const weatherInfoG = useSelector(state => state.weatherInfoG)
 
-  // console.log('CurrentWeather called')
+  if (isEmptyObj(weatherInfoG)) {
+    return <div> please find your city. </div>
+  }
+
+  const cityLabel = weatherInfoG.cityLabel
+  const cw = weatherInfoG.current
 
   return (
     <>
       <div className="cw-container">
         <div className="cw-headline"> 
-          <span className="cw-desc"> Overcast Clouds </span>
           <LocationOnIcon/>
-          <span className="cw-city-label"> City of London, England, UK </span> 
+          <span className="cw-city-label"> {cityLabel} </span> 
         </div>
 
         <div className="cw">
           <div className="cw-main">
-            <div className="cw-icon" style={{backgroundImage: "url('https://openweathermap.org/img/wn/10d@4x.png')"}}> </div>
             <div>
-              <div className="degree-real"> <div> 32°C </div> </div>
-              <div className="degree-feel"> Feels like : <span> 12°C </span> </div>
+              <div className="cw-icon" style={{backgroundImage: `url('https://openweathermap.org/img/wn/${cw.weather[0].icon}@4x.png')`}}> </div>
+            </div>
+            <div>
+              <div className="degree-real"> <div> {Math.round(cw.temp)}°C </div> </div>
+              <div className="degree-feel"> Feels like : <span> {cw.feels_like}°C </span> </div>
+              <div className="cw-desc"> {cw.weather[0].description} </div>
             </div>
           </div>
 
           <div className="cw-attr">
             <div> 
-              <p> <span className="cw-attr-name"> UV index : </span> 0 </p> 
+              <p> <span className="cw-attr-name"> UV index : </span> {cw.uvi} </p> 
             </div>  {/* https://en.wikipedia.org/wiki/Ultraviolet_index */}
             <div> 
-              <p> <span className="cw-attr-name"> Humidity : </span> 80% </p> 
+              <p> <span className="cw-attr-name"> Humidity : </span> {cw.humidity}% </p> 
             </div>
             <div> 
-              <p> <span className="cw-attr-name"> Pressure : </span> 1080 mb </p>
+              <p> <span className="cw-attr-name"> Pressure : </span> {cw.pressure} mb </p>
             </div>
             <div> 
-              <p> <span className="cw-attr-name"> Wind : </span> 12km/h </p> 
+              <p> <span className="cw-attr-name"> Wind : </span> {cw.wind_speed}km/h </p> 
             </div>
           </div>
         </div>
@@ -81,8 +89,6 @@ const CurrentWeather = () => {
 
 
 export default function WeatherInfo() {
-  
-  const searchCity = useSelector(state => state.searchCity_g)
 
   const [value, setValue] = useState(0);
 

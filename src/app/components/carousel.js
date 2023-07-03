@@ -20,7 +20,7 @@ export default function Carousel() {
             <RecentLocations />
           </div>
           <div className='carousel-content-side'>
-            <iframe src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1`} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
+            <iframe src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1`} title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"></iframe>
           </div>
         </div>
       </div>

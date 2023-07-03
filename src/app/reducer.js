@@ -9,6 +9,16 @@ const searchCityReducer = (state = {}, action) => {
   }
 }
 
+const weatherInfoReducer = (state = {}, action) => {
+  switch (action.type) {
+    case 'SET_WEATHER_INFO':
+      return action.payload
+    default:
+      return state
+  }
+}
+
 export default combineReducers({
-  searchCity_g: searchCityReducer
+  searchCityG: searchCityReducer,
+  weatherInfoG: weatherInfoReducer
 })

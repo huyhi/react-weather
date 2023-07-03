@@ -7,11 +7,7 @@ import { Provider } from 'react-redux';
 
 // Redux 
 // Store Action Reducer Dispath
-
 let store = createStore(reducers)
-
-// store.subscribe(() => console.log(store.getState()))
-// store.dispatch(increment())
 
 export default function Home() {
   return (

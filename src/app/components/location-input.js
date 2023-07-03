@@ -2,13 +2,12 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import apis from '../api'
+import { apis, Q_WEATHER_HOST, OPEN_WEATHER_HOST } from '../api'
 
 const inputStyle = {
   width: '30em',
   backgroundColor: '#F8F8F8',
   borderRadius: '0.5em',
-  // border: '0.4em solid #A1A1AA',
 }
 
 export default function SearchInput() {
@@ -22,17 +21,34 @@ export default function SearchInput() {
 
   const loadOptions = (searchText) => {
     apis
-    .get('/city/lookup', {location: searchText, number: 5})
+    .get(Q_WEATHER_HOST, '/city/lookup', {location: searchText, number: 5})
     .then((responseData) => {
       responseData.code === '200'
       &&
       setOptions(responseData.location.map((city) => {
         return {
-          label: `${city.name},${city.adm1},${city.country}`,
+          label: `${city.name}, ${city.adm1}, ${city.country}`,
           lat: city.lat,
           lon: city.lon,
         }
       }))
+    })
+  }
+
+  const fetchWeatherData = (cityInfo) => {
+    apis
+    .get(OPEN_WEATHER_HOST, '/onecall', {
+      lat: cityInfo.lat,
+      lon: cityInfo.lon,
+      units: 'metric'
+    })
+    .then((responseData) => {
+      if (responseData.code !== undefined) {
+        console.log(`fetch weather data error ${responseData}`)
+        return
+      }
+      responseData.cityLabel = cityInfo.label
+      dispatch(setWeatherInfoG(responseData))
     })
   }
 
@@ -43,13 +59,15 @@ export default function SearchInput() {
       value={value}
       options={options}
       sx={inputStyle}
-      renderInput={(params) => {
-        return <TextField {...params} label="Search your location"/>
+      renderInput={(props) => {
+        return <TextField {...props} label="Search your location (at least 2 letters)"/>
       }}
-      onChange={(event, selectedValue) => {
-        // fetch weather data
-        console.log('onChangeCall', event.target.value, selectedValue)
-        dispatch(setSearchCityG(selectedValue))
+      renderOption={(props, option) => {
+        return (<div {...props} key={option.label}> {option.label} </div>)
+      }}
+      onChange={(event, selected) => {
+        dispatch(setSearchCityG(selected))
+        fetchWeatherData(selected)
       }}
       onInputChange={(event) => {
         event.target.value && loadOptions(event.target.value)

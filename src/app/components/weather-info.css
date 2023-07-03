@@ -19,10 +19,6 @@
   font-weight: 600;
 }
 
-.cw-desc {
-  padding: 0 1em;
-}
-
 .cw {
   display: flex;
 }
@@ -39,8 +35,7 @@
 }
 
 .degree-real{
-  height: 75%;
-  line-height: 75%;
+  height: 60%;
   display: flex;
   align-items: center;
   font-size: 4em;
@@ -48,7 +43,7 @@
 }
 
 .degree-feel span {
-  font-size: 1.5em;
+  font-weight: 600;
 }
 
 .cw-attr {
