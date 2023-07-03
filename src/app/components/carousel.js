@@ -1,15 +1,20 @@
 import './carousel.css'
+import { randomInt } from '../common'
 import Headbar from './headbar'
 import SearchInput from './location-input'
 import RecentLocations from './recent-locations'
+import { useEffect, useState } from 'react'
 
 
 export default function Carousel() {
 
-  let youtubeId = 'IsEbxgrQoAE'
+  const youtubeId = 'IsEbxgrQoAE'
+
+  const [bgId, setBgId] = useState('')
+  useEffect (() => {setBgId(randomInt(5))}, [])
 
   return (
-    <div className='carousel'>
+    <div className='carousel' style={{ backgroundImage: `url('/carousel-bg/${bgId}.jpg')` }}>
       <div className='carousel-container'>
 
         <Headbar />

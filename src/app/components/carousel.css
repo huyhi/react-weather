@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   height: 25em;
-  background: url('/carousel-bg/1.jpg') center center no-repeat, linear-gradient(#878787,#ebebeb);
+  background-position: center center;
   background-size: cover;
 }
 

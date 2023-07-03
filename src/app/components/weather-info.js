@@ -40,7 +40,7 @@ const CurrentWeather = () => {
   const weatherInfoG = useSelector(state => state.weatherInfoG)
 
   if (isEmptyObj(weatherInfoG)) {
-    return <div> please find your city. </div>
+    return <div className="promot-info"> Please find your city </div>
   }
 
   const cityLabel = weatherInfoG.cityLabel
@@ -111,10 +111,10 @@ export default function WeatherInfo() {
             <CurrentWeather/>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            TabPanel Item Two
+            <div className="promot-info"> Coming Soon </div>
           </TabPanel>
           <TabPanel value={value} index={2}>
-            TabPanel Item Three
+            <div className="promot-info"> Coming Soon </div>
           </TabPanel>
         </Box>
       </div>

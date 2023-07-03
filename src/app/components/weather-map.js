@@ -1,0 +1,118 @@
+import L from 'leaflet';
+import './weather-map.css'
+import "leaflet-openweathermap"
+import "leaflet-openweathermap/leaflet-openweathermap.js"
+import "leaflet-openweathermap/leaflet-openweathermap.css"
+import { Component } from 'react';
+
+class WeatherMap extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      center: [-0.789275,113.921327],
+      zoom: 5,
+      map: null,
+      tileLayer: null,
+      baseMap: '',
+      layersWeather: []
+    }
+    this.leafletMap = null
+    this.init = this.init.bind(this)
+  }
+
+  remove(map) {
+    map.remove()
+  }
+
+  removeLayer(map, layer) {
+    map.removeLayer(layer)
+  }
+
+  init(id) {
+    const map = L.map(id, {
+      center: [-0.789275, 113.921327],
+      zoom: 5
+    });
+
+    const defaultBase = 'https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png'
+    const tileLayer = L.tileLayer(defaultBase).addTo(map);
+    this.setState({ map, tileLayer });
+  }
+
+  addWeatherLayertoMap(layer) {
+    const myAppId = '9020423f7dd2dfb03f34ca4b767ad223' // insert your ID from https://openweathermap.org/api here
+    const weather = []
+    if (layer.length > 0) {
+      for (let i = 0; i < layer.length; i++) {
+        switch (layer[i]) {
+          case "clouds":
+            weather[i] = L.OWM.clouds({ appId: myAppId });
+            break;
+          case "cloudscls":
+            weather[i] = L.OWM.cloudsClassic({ appId: myAppId });
+            break;
+          case "precipitation":
+            weather[i] = L.OWM.precipitation({ appId: myAppId });
+            break;
+          case "precipitationcls":
+            weather[i] = L.OWM.precipitationClassic({ appId: myAppId });
+            break;
+          case "rain":
+            weather[i] = L.OWM.rain({ appId: myAppId });
+            break;
+          case "raincls":
+            weather[i] = L.OWM.rainClassic({ appId: myAppId });
+            break;
+          case "snow":
+            weather[i] = L.OWM.snow({ appId: myAppId });
+            break;
+          case "pressure":
+            weather[i] = L.OWM.pressure({ appId: myAppId });
+            break;
+          case "pressurecntr":
+            weather[i] = L.OWM.pressureContour({ appId: myAppId });
+            break;
+          case "temp":
+            weather[i] = L.OWM.temperature({ appId: myAppId, showLegend: false });
+            break;
+          case "wind":
+            weather[i] = L.OWM.wind({ appId: myAppId, showTimestamp: true });
+            break;
+          default:
+            return null
+        }
+        weather[i].addTo(this.state.map)
+      }
+    }
+    this.setState({ layersWeather: weather });
+  }
+
+  componentDidMount() {
+    this.init(this.leafletMap);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevProps.weatherSelected !== this.props.weatherSelected) {
+      for (let i = 0; i < this.state.layersWeather.length; i++) {
+        if (this.state.map.hasLayer(this.state.layersWeather[i])) {
+          this.state.map.removeLayer(this.state.layersWeather[i])
+        }
+      }
+      console.log("print" + this.props.weatherSelected)
+      this.addWeatherLayertoMap(this.props.weatherSelected)
+    }
+  }
+
+  render() {
+    return (
+      <div
+        id="map"
+        ref={(map) => this.leafletMap = map}
+      >
+      </div>
+    )
+  }
+}
+
+export default WeatherMap
