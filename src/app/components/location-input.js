@@ -5,7 +5,8 @@ import { useDispatch } from 'react-redux';
 import { apis, Q_WEATHER_HOST, OPEN_WEATHER_HOST } from '../api'
 
 const inputStyle = {
-  width: '30em',
+  width: '55%',
+  minWidth: '15em',
   backgroundColor: '#F8F8F8',
   borderRadius: '0.5em',
 }
@@ -66,6 +67,7 @@ export default function SearchInput() {
         return (<div {...props} key={option.label}> {option.label} </div>)
       }}
       onChange={(event, selected) => {
+        setValue(selected.label)
         dispatch(setSearchCityG(selected))
         fetchWeatherData(selected)
       }}

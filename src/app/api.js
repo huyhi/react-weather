@@ -46,6 +46,7 @@ const apis = {
 
 export {
 	apis,
+	OPEN_WEATHER_KEY,
 	OPEN_WEATHER_HOST,
 	Q_WEATHER_HOST
 }

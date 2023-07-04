@@ -22,7 +22,7 @@ function TabPanel(props) {
     >
       {value === index && (
         <Box>
-          <Typography>{children}</Typography>
+          <Typography component={'div'}> {children} </Typography>
         </Box>
       )}
     </div>
@@ -40,7 +40,7 @@ const CurrentWeather = () => {
   const weatherInfoG = useSelector(state => state.weatherInfoG)
 
   if (isEmptyObj(weatherInfoG)) {
-    return <div className="promot-info"> Please find your city </div>
+    return <div className="promot-info"> Please find your city in text area </div>
   }
 
   const cityLabel = weatherInfoG.cityLabel
@@ -62,7 +62,9 @@ const CurrentWeather = () => {
             <div>
               <div className="degree-real"> <div> {Math.round(cw.temp)}°C </div> </div>
               <div className="degree-feel"> Feels like : <span> {cw.feels_like}°C </span> </div>
-              <div className="cw-desc"> {cw.weather[0].description} </div>
+              <div className="cw-desc"> 
+                { `${cw.weather[0].description[0].toUpperCase()}${cw.weather[0].description.slice(1)}` } 
+              </div>
             </div>
           </div>
 
