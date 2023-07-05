@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux"
+import { useSelector } from "react-redux"
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import './weather-info.css'
@@ -86,7 +86,6 @@ const CurrentWeather = () => {
       </div>
     </>
   )
-  // return <> 123 </>
 }
 
 

@@ -1,4 +1,3 @@
-'use-client';
 import { MapContainer, TileLayer } from 'react-leaflet'
 import { OPEN_WEATHER_KEY } from '../api'
 import './weather-map.css'
@@ -18,7 +17,6 @@ export default function WeatherMap() {
         <TileLayer 
           url={`https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=${OPEN_WEATHER_KEY}`}
         />
-        {/* <ImageOverlay></ImageOverlay> */}
       </MapContainer>
     </div>
   )
