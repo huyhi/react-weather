@@ -3,6 +3,29 @@
   justify-content: space-between;
   align-items: center;
   height: 4em;
+  font-weight: 600;
+}
+
+.headbar-left {
+  display: flex;
+  align-items: center;
+}
+
+.location-weather {
+  display: flex;
+  align-items: center;
+  line-height: 1.5em;
+  color: #FBFCFC;
+}
+
+.temp {
+  margin: 0 0.5em;
+}
+
+.weather-img {
+  width: 3em;
+  height: 3em;
+  background-size: cover;
 }
 
 .logo {

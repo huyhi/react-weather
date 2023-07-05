@@ -9,6 +9,9 @@ export default function WeatherMap() {
 
   return (
     <div className='map-container'>
+      <div className='map-title'>
+        Rain Forecast Radar
+      </div>
       <MapContainer id='map' center={position} zoom={4} scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

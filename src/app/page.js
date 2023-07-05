@@ -2,7 +2,6 @@
 import Carousel from './components/carousel'
 import WeatherInfo from './components/weather-info'
 import dynamic from 'next/dynamic'
-import { lazy } from 'react';
 import { createStore } from 'redux'
 import reducers from './reducer'
 import { Provider } from 'react-redux'
