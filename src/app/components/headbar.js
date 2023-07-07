@@ -70,6 +70,7 @@ export default function Headbar() {
     <div className='headbar'>
       <div className='headbar-left'>
         <div className='logo'></div>
+        <div className='logo-name'> {'Hongye\'s Mini Weather'} </div>
         <LocationWeather />
       </div>
       <div className='login'>

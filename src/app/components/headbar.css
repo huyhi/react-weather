@@ -29,9 +29,15 @@
 }
 
 .logo {
-  width: 12em;
-  height: 1.5em;
-  background-image: url('/accuweather.svg');
-  background-repeat: no-repeat;
+  width: 2em;
+  height: 2em;
+  background-image: url('/logo.svg');
+  background-size: cover;
   background-position: center center;
+}
+
+.logo-name {
+  color: #FBFCFC;
+  margin: 0 1em 0 0.5em;
+  font-family: "Helvetica Neue", Helvetica, Arial;
 }

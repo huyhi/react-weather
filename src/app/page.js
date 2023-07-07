@@ -1,6 +1,7 @@
 'use client'
 import Carousel from './components/carousel'
 import WeatherInfo from './components/weather-info'
+import Footer from './components/footer'
 import dynamic from 'next/dynamic'
 import { createStore } from 'redux'
 import reducers from './reducer'
@@ -25,6 +26,7 @@ export default function Home() {
           <WeatherMap />
           <WeatherInfo />
         </div>
+        <Footer />
       </Provider>
     </>
   )
