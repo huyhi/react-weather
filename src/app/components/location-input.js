@@ -1,8 +1,9 @@
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { apis, Q_WEATHER_HOST, OPEN_WEATHER_HOST } from '../api'
+import { debounce } from '../common';
 
 const inputStyle = {
   width: '55%',
@@ -16,11 +17,16 @@ export default function SearchInput() {
   const [options, setOptions] = useState([])
   const [value, setValue] = useState('')
 
+  const debounceCached = useCallback(debounce, [])
+
   const dispatch = useDispatch()
   const setSearchCityG = (data) => {return {type: 'SET_SEARCHED_CITY', payload: data}}
   const setWeatherInfoG = (data) => {return {type: 'SET_WEATHER_INFO', payload: data}}
 
   const loadOptions = (searchText) => {
+    if (!searchText) {
+      return
+    }
     apis
     .get(Q_WEATHER_HOST, '/city/lookup', {location: searchText, number: 5})
     .then((responseData) => {
@@ -67,13 +73,16 @@ export default function SearchInput() {
         return (<div {...props} key={option.label}> {option.label} </div>)
       }}
       onChange={(event, selected) => {
+        if (selected === null) {
+          return
+        }
         setValue(selected.label)
         dispatch(setSearchCityG(selected))
         fetchWeatherData(selected)
       }}
-      onInputChange={(event) => {
-        event.target.value && loadOptions(event.target.value)
-      }}
+      onInputChange={
+        debounceCached((event) => {loadOptions(event.target.value)}, 450)
+      }
     />
   )
 }
