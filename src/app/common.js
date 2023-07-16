@@ -6,6 +6,8 @@ export const randomInt = (maxNum) => {
   return Math.floor(Math.random(maxNum) * maxNum);
 }
 
+export const ts2ddFmtHour = (ts) => `00${new Date(ts).getHours()}`.slice(-2)
+
 export const debounce = (func, delay) => {
   let timer = null
   return function(...args) {

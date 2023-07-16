@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { useState } from "react";
 import PropTypes from 'prop-types';
 import './weather-info.css'
-import { isEmptyObj } from '../common'
+import { isEmptyObj, ts2ddFmtHour } from '../common'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
@@ -35,12 +35,17 @@ TabPanel.propTypes = {
   value: PropTypes.number.isRequired,
 };
 
+
+const DefaultPromotInfo = () => {
+  return <div className="promot-info"> Please find your city in text area </div>
+}
+
 const CurrentWeather = () => {
 
   const weatherInfoG = useSelector(state => state.weatherInfoG)
 
   if (isEmptyObj(weatherInfoG)) {
-    return <div className="promot-info"> Please find your city in text area </div>
+    return <DefaultPromotInfo />
   }
 
   const cityLabel = weatherInfoG.cityLabel
@@ -89,6 +94,44 @@ const CurrentWeather = () => {
 }
 
 
+const HourlyWeather = () => {
+
+  const weatherInfoG = useSelector(state => state.weatherInfoG)
+
+  if (isEmptyObj(weatherInfoG)) {
+    return <DefaultPromotInfo />
+  }
+
+  console.log(weatherInfoG)
+
+  return (
+    <div className="hourly-weather-container">
+      <div className="hourly-weather-title">
+        24 hours weather forecast
+      </div>
+      <div className="hourly-weather">
+      {
+        weatherInfoG.hourly.slice(0, 24).map((item, idx) => 
+          (
+          <div className="hourly-weather-item" key={idx}>
+            <div> 
+              {idx === 0 ? 'now' : ts2ddFmtHour(item.dt * 1000)}
+            </div>
+            <div 
+              className="hourly-weather-icon"
+              style={{backgroundImage: `url("https://openweathermap.org/img/wn/${item.weather[0].icon}@2x.png")`}}>
+            </div>
+            <div> {Math.round(item.temp)}°</div>
+          </div>
+          )
+        )
+      }
+      </div>
+    </div>
+  )
+}
+
+
 export default function WeatherInfo() {
 
   const [value, setValue] = useState(0);
@@ -112,7 +155,7 @@ export default function WeatherInfo() {
             <CurrentWeather/>
           </TabPanel>
           <TabPanel value={value} index={1}>
-            <div className="promot-info"> Coming Soon </div>
+            <HourlyWeather/>
           </TabPanel>
           <TabPanel value={value} index={2}>
             <div className="promot-info"> Coming Soon </div>
