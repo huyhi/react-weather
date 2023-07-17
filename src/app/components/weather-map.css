@@ -13,3 +13,24 @@
   height: 30em;
   border-radius: 1em;
 }
+
+
+@media screen and (max-width: 768px) {
+
+  .map-container {
+    width: 95%;  
+    margin: 0 auto;
+    order: 1;
+  }
+
+  .map-title {
+    line-height: 1.5em;
+    font-size: 1em;
+    color: #444;
+    margin-top: 0.5em;
+  }
+
+  #map {
+    height: 20em;
+  }
+}

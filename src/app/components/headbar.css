@@ -2,7 +2,6 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4em;
   font-weight: 600;
 }
 
@@ -11,10 +10,15 @@
   align-items: center;
 }
 
+.headbar-left > div {
+  height: 4em;
+  display: flex;
+  align-items: center;
+}
+
 .location-weather {
   display: flex;
   align-items: center;
-  line-height: 1.5em;
   color: #FBFCFC;
 }
 
@@ -33,11 +37,56 @@
   height: 2em;
   background-image: url('/logo.svg');
   background-size: cover;
-  background-position: center center;
 }
 
 .logo-name {
   color: #FBFCFC;
   margin: 0 1em 0 0.5em;
   font-family: "Helvetica Neue", Helvetica, Arial;
+}
+
+.headbar-left .view-on-github-btn {
+  display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+  .headbar {
+    align-items: center;
+    margin-top: 0.5em;
+  }
+
+  .headbar-left {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    align-content: flex-start;
+  }
+
+  .headbar-left > div {
+    height: 3em;
+  }
+
+  .headbar-left .view-on-github-btn {
+    display: block;
+  }  
+
+  .headbar-right {
+    display: none;
+  }
+
+  .location-weather {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 456px) {
+  .headbar {
+    font-size: 0.8em;
+  }
+
+  .view-on-github-btn {
+    font-size: 0.8em;
+  }
 }

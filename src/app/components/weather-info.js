@@ -81,7 +81,7 @@ const CurrentWeather = () => {
               <p> <span className="cw-attr-name"> Humidity : </span> {cw.humidity}% </p> 
             </div>
             <div> 
-              <p> <span className="cw-attr-name"> Pressure : </span> {cw.pressure} mb </p>
+              <p> <span className="cw-attr-name"> Pressure : </span> {cw.pressure} hPa </p>
             </div>
             <div> 
               <p> <span className="cw-attr-name"> Wind : </span> {cw.wind_speed}km/h </p> 

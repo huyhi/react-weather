@@ -85,6 +85,10 @@
   overflow-x: scroll;
 }
 
+.hourly-weather::-webkit-scrollbar {
+  display: none;
+}
+
 .hourly-weather > div {
   width: 3em;
   height: 10em;
@@ -101,4 +105,31 @@
 
 .hourly-weather-item > div {
   margin: 0.5em 0;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .weather-info-container {
+    width: 90%;
+    margin: 0 auto;
+    order: 0;
+  }
+
+  .cw {
+    flex-wrap: wrap;
+  }
+  
+  .cw-city-label {
+    font-size: 0.8em;
+  }
+
+  .cw-icon {
+    width: 6em;
+    height: 6em;
+  }
+
+  .cw-attr {
+    margin: 0 0 0 1em;
+  }
 }

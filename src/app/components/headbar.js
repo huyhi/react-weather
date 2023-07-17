@@ -55,32 +55,45 @@ function LocationWeather() {
   )
 }
 
-export default function Headbar() {
+
+function ViewOnGithub( {showText} ) {
   const buttonStyle = {
     // color: '#263141',
-    borderWidth: '3px',
+    borderWidth: '2px',
     fontWeight: 600,
     borderRadius: 50,
     '&:hover': {
-      borderWidth: '3px',
+      borderWidth: '2px',
     }
   }
 
   return (
+    <Button 
+      className="view-on-github-btn"
+      variant="outlined"
+      sx = {buttonStyle}
+      onClick={() => { window.location.href = 'https://github.com/huyhi/react-weather'}}
+    >
+      {showText}
+    </Button>
+  )
+}
+
+export default function Headbar() {
+
+
+  return (
     <div className='headbar'>
       <div className='headbar-left'>
-        <div className='logo'></div>
-        <div className='logo-name'> {'Hongye\'s Mini Weather'} </div>
+        <div>
+          <div className='logo'></div>
+          <div className='logo-name'> {'Hongye\'s Mini Weather'} </div>
+          <ViewOnGithub showText='github' />
+        </div>
         <LocationWeather />
       </div>
-      <div className='login'>
-        <Button 
-          variant="outlined"
-          sx = {buttonStyle}
-          onClick={() => { window.location.href = 'https://github.com/huyhi/react-weather'}}
-        >
-          view on Github
-        </Button>
+      <div className='headbar-right'>
+        <ViewOnGithub showText='view on github'/>
       </div>
     </div>
   )

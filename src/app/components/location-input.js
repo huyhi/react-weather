@@ -4,13 +4,8 @@ import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { apis, Q_WEATHER_HOST, OPEN_WEATHER_HOST } from '../api'
 import { debounce } from '../common';
+import './location-input.css'
 
-const inputStyle = {
-  width: '55%',
-  minWidth: '15em',
-  backgroundColor: '#F8F8F8',
-  borderRadius: '0.5em',
-}
 
 export default function SearchInput() {
 
@@ -61,11 +56,10 @@ export default function SearchInput() {
 
   return (
     <Autocomplete
-      id="search-input"
+      className="search-input"
       disablePortal
       value={value}
       options={options}
-      sx={inputStyle}
       renderInput={(props) => {
         return <TextField {...props} label="Search your location (at least 2 letters)"/>
       }}

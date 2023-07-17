@@ -1,0 +1,13 @@
+.search-input {
+  width: 20em;
+  background-color: #F8F8F8;
+  border-radius: 0.5em;
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .search-input {
+    width: 100%;
+  }
+}
