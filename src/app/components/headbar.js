@@ -87,7 +87,6 @@ export default function Headbar() {
       <div className='headbar-left'>
         <div>
           <div className='logo'></div>
-          <div className='logo-name'> {'Hongye\'s Mini Weather'} </div>
           <ViewOnGithub showText='github' />
         </div>
         <LocationWeather />

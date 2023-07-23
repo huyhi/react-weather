@@ -11,12 +11,13 @@
 }
 
 .headbar-left > div {
-  height: 4em;
+  margin-top: 0.5em;
   display: flex;
   align-items: center;
 }
 
 .location-weather {
+  height: 3em;
   display: flex;
   align-items: center;
   color: #FBFCFC;
@@ -33,16 +34,11 @@
 }
 
 .logo {
-  width: 2em;
-  height: 2em;
-  background-image: url('/logo.svg');
+  width: 16em;
+  height: 3em;
+  background-image: url('/logo1.png');
   background-size: cover;
-}
-
-.logo-name {
-  color: #FBFCFC;
-  margin: 0 1em 0 0.5em;
-  font-family: "Helvetica Neue", Helvetica, Arial;
+  background-position: center center;
 }
 
 .headbar-left .view-on-github-btn {
