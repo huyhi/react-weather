@@ -2,7 +2,7 @@ import { useSelector } from "react-redux"
 import { MapContainer, TileLayer, useMap } from 'react-leaflet'
 import { OPEN_WEATHER_KEY } from '../api'
 import { isEmptyObj } from '../common'
-import './weather-map.css'
+import '../styles/weather-map.css'
 import 'leaflet/dist/leaflet.css';
 
 function ChangeView( {searchCity} ) {

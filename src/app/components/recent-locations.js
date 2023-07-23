@@ -1,4 +1,4 @@
-import './recent-locations.css'
+import '../styles/recent-locations.css'
 
 export default function RecentLocations() {
 

@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
-import './headbar.css'
+import '../styles/headbar.css'
 import Button from '@mui/material/Button';
+import OpenInNewIcon from '@mui/icons-material/OpenInNew';
 import { isEmptyObj } from '../common';
 import { apis, Q_WEATHER_HOST, OPEN_WEATHER_HOST } from '../api'
+import Link from 'next/link';
 
 
 function LocationWeather() {
@@ -56,44 +58,43 @@ function LocationWeather() {
 }
 
 
-function ViewOnGithub( {showText} ) {
+function BtnGroup() {
   const buttonStyle = {
-    // color: '#263141',
-    borderWidth: '2px',
     fontWeight: 600,
-    borderRadius: 50,
-    '&:hover': {
-      borderWidth: '2px',
-    }
   }
 
   return (
-    <Button 
-      className="view-on-github-btn"
-      variant="outlined"
-      sx = {buttonStyle}
-      onClick={() => { window.location.href = 'https://github.com/huyhi/react-weather'}}
-    >
-      {showText}
-    </Button>
+    <div className='btn-group'>
+      <Link href='/signin'>
+        <Button 
+          className='sign-in-btn'
+          size='small'
+          variant="contained"
+          sx={buttonStyle}
+        >
+          sign in
+        </Button>
+      </Link>
+
+      <Button 
+        className='github-btn'
+        size='small'
+        variant="contained"
+        sx={buttonStyle}
+        onClick={() => { window.location.href = 'https://github.com/huyhi/react-weather'}}
+      >
+        <OpenInNewIcon/> github
+      </Button>
+    </div>
   )
 }
 
 export default function Headbar() {
-
-
   return (
     <div className='headbar'>
-      <div className='headbar-left'>
-        <div>
-          <div className='logo'></div>
-          <ViewOnGithub showText='github' />
-        </div>
-        <LocationWeather />
-      </div>
-      <div className='headbar-right'>
-        <ViewOnGithub showText='view on github'/>
-      </div>
+      <div className='logo'></div>
+      <LocationWeather />
+      <BtnGroup/>
     </div>
   )
 } 

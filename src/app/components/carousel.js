@@ -1,4 +1,4 @@
-import './carousel.css'
+import '../styles/carousel.css'
 import { randomInt } from '../common'
 import Headbar from './headbar'
 import SearchInput from './location-input'

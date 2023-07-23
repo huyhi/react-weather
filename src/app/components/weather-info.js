@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { useState } from "react";
 import PropTypes from 'prop-types';
-import './weather-info.css'
+import '../styles/weather-info.css'
 import { isEmptyObj, ts2ddFmtHour } from '../common'
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';

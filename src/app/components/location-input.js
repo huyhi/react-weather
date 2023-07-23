@@ -4,7 +4,7 @@ import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { apis, Q_WEATHER_HOST, OPEN_WEATHER_HOST } from '../api'
 import { debounce } from '../common';
-import './location-input.css'
+import '../styles/location-input.css'
 
 
 export default function SearchInput() {
